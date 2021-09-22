@@ -1,4 +1,5 @@
 const express = require('express');
+const response = require('./network/response');
 const router = express.Router();
 
 var app = express();
@@ -12,13 +13,19 @@ router.get('/message', (req, res) => {
 	// res.header({
 	// 	'custom-header': 'Valor personalizado',
 	// });
-	res.send('Lista de mensajes');
+	//res.send('Lista de mensajes');
+	response.success(req, res, 'Lista de mensajes');
 });
 
 router.post('/message', (req, res) => {
-	res
-		.status(201)
-		.send({ error: '', body: 'Creado correctamente' });
+	// res
+	// 	.status(201)
+	// 	.send({ error: '', body: 'Creado correctamente' });
+	if (req.query.error == 'ok') {
+		response.error(req, res, 'Error simulado', 400);
+	} else {
+		response.success(req, res, 'Creado correctamente', 201);
+	}
 });
 
 router.delete('/message', (req, res) => {
