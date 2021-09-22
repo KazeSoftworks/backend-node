@@ -22,7 +22,13 @@ router.post('/message', (req, res) => {
 	// 	.status(201)
 	// 	.send({ error: '', body: 'Creado correctamente' });
 	if (req.query.error == 'ok') {
-		response.error(req, res, 'Error simulado', 400);
+		response.error(
+			req,
+			res,
+			'Error inesperado',
+			500,
+			'Es una simulacion de errores'
+		);
 	} else {
 		response.success(req, res, 'Creado correctamente', 201);
 	}
