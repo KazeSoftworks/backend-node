@@ -9,20 +9,25 @@ app.use(router);
 
 router.get('/message', (req, res) => {
 	console.log(req.headers);
-	res.header({
-		'custom-header': 'Valor personalizado',
-	});
+	// res.header({
+	// 	'custom-header': 'Valor personalizado',
+	// });
 	res.send('Lista de mensajes');
 });
 
 router.post('/message', (req, res) => {
-	res.send('Añadir mensajes');
+	res
+		.status(201)
+		.send({ error: '', body: 'Creado correctamente' });
 });
 
 router.delete('/message', (req, res) => {
 	console.log(req.query);
 	console.log(req.body);
-	res.send('Mensaje borrado');
+	res.status(200).send({
+		error: '',
+		body: 'Mensaje borrado correctamente',
+	});
 });
 
 // app.use('/', (req, res) => {
