@@ -1,3 +1,4 @@
+const { response } = require('express');
 const store = require('./store');
 
 const addMessage = (user, message) => {
@@ -24,7 +25,18 @@ function getMessages() {
 	});
 }
 
+const updateMessage = (id, message) => {
+	return new Promise(async (resolve, reject) => {
+		if (!id || !message) {
+			return reject('Los datos son invalidos');
+		}
+		const result = await store.update(id, message);
+		resolve(result);
+	});
+};
+
 module.exports = {
 	addMessage,
 	getMessages,
+	updateMessage,
 };
