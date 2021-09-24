@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 				res,
 				'Información Invalidad',
 				400,
-				'Error de mensaje'
+				e
 			);
 		});
 });
