@@ -1,4 +1,5 @@
 exports.success = (req, res, msg, status = 200) => {
+	console.log('[Response success', msg);
 	res.status(status).send({
 		error: '',
 		body: msg,
