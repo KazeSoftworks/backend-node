@@ -10,14 +10,16 @@ db.connect(process.env.MONGO_URI, {
 console.log('[db] Coneccion de base de datos');
 
 const addMessage = (message) => {
-	//list.push(message);
 	const myMessage = new Model(message);
 	myMessage.save();
 };
 
-const getMessages = async () => {
-	//return list;
-	const messages = await Model.find();
+const getMessages = async (filterUser) => {
+	let filter = {};
+	if (filterUser !== null) {
+		filter = { user: filterUser };
+	}
+	const messages = await Model.find(filter);
 	return messages;
 };
 

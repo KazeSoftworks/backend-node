@@ -19,11 +19,11 @@ const addMessage = (user, message) => {
 	});
 };
 
-function getMessages() {
+const getMessages = (filterUser) => {
 	return new Promise((resolve, reject) => {
-		resolve(store.list());
+		resolve(store.list(filterUser));
 	});
-}
+};
 
 const updateMessage = (id, message) => {
 	return new Promise(async (resolve, reject) => {
