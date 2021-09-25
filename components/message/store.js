@@ -1,6 +1,4 @@
-const db = require('mongoose');
 const Model = require('./model');
-const env = require('dotenv').config();
 
 const addMessage = (message) => {
 	const myMessage = new Model(message);
@@ -8,12 +6,20 @@ const addMessage = (message) => {
 };
 
 const getMessages = async (filterUser) => {
-	let filter = {};
-	if (filterUser !== null) {
-		filter = { user: filterUser };
-	}
-	const messages = await Model.find(filter);
-	return messages;
+	return new Promise((resolve, reject) => {
+		let filter = {};
+		if (filterUser !== null) {
+			filter = { user: filterUser };
+		}
+		Model.find(filter)
+			.populate('user')
+			.exec((e, populated) => {
+				if (e) {
+					reject(e);
+				}
+				resolve(populated);
+			});
+	});
 };
 
 const updateText = async (id, message) => {

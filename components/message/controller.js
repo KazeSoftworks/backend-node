@@ -1,7 +1,6 @@
-const { response } = require('express');
 const store = require('./store');
 
-const addMessage = (user, message) => {
+const addMessage = (chat, user, message) => {
 	return new Promise((resolve, reject) => {
 		if (!user || !message) {
 			console.error(
@@ -10,6 +9,7 @@ const addMessage = (user, message) => {
 			return reject('Los datos son incorrectos');
 		}
 		const fullMessage = {
+			chat: chat,
 			user: user,
 			message: message,
 			date: new Date(),
