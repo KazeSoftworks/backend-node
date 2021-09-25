@@ -13,11 +13,11 @@
 	<body>
 		<h1>Mira la consola</h1>
 		<script>
-			var socket = io.connect('http://localhost:8080', {
+			var socket = io.connect('http://localhost:3000', {
 				forceNew: true,
 			});
 
-			socket.on('mensaje', (data) => {
+			socket.on('message', (data) => {
 				console.log(data);
 			});
 		</script>
