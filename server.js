@@ -1,7 +1,8 @@
 const express = require('express');
+const db = require('./db');
 
 var app = express();
-
+db();
 //const router = require('./components/message/network');
 const router = require('./network/routes');
 
