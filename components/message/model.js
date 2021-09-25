@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const mySchema = new Schema({
 	chat: {
 		type: Schema.ObjectId,
-		ref: 'Chat',
+		ref: 'chat',
 	},
 	user: {
 		type: Schema.ObjectId,
-		ref: 'User',
+		ref: 'user',
 	},
 	message: {
 		type: String,

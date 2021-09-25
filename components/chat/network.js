@@ -1,11 +1,8 @@
 const express = require('express');
-const multer = require('multer');
 
 const router = express.Router();
 const response = require('../../network/response');
 const controller = require('./controller');
-
-const upload = multer({ dest: 'uploads/' });
 
 router.post('/', function (req, res) {
 	controller
